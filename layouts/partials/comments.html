@@ -7,6 +7,12 @@
 
 {{- $page := . -}}
 {{- with site.Params.commentSystems -}}
+  {{- if $pageCommentSystems.giscus -}}
+  {{- with .giscus -}}
+    {{- partial "giscus.html" (dict "page" $page "ctx" .) }}
+  {{- end -}}
+  {{- end -}}
+
   {{- if $pageCommentSystems.remark42 -}}
   {{- with .remark42 -}}
     {{- partial "remark42.html" (dict "page" $page "ctx" .) }}
